@@ -1,4 +1,5 @@
 import os
+import sys
 import struct
 from Crypto.Cipher import AES
 from Crypto.Hash import MD5
@@ -6,11 +7,11 @@ from Crypto.Hash import MD5
 
 def crypt(ip_filepath,op_filepath):
     chunk_size = 128*1024
-    keys = open('pwd.txt','r').read().split('\n')
-    key = MD5.new(keys[0]).hexdigest()[0:16] #hashlib.md5() can also be used
+    key = MD5.new(sys.argv[1]).hexdigest()[0:16] #hashlib.md5() can also be used
+    iv = sys.argv[2]
     filesize = os.path.getsize(ip_filepath)
 
-    encryptor = AES.new(key,AES.MODE_CBC, keys[1])
+    encryptor = AES.new(key,AES.MODE_CBC, iv)
     
     with open(ip_filepath, 'rb') as in_file:
         with open(op_filepath, 'wb') as op_file:
@@ -25,8 +26,8 @@ def crypt(ip_filepath,op_filepath):
 
 
 if(__name__ == "__main__"):
-    paths = [os.path.abspath(path) for path in open('paths.txt','r').read().split()]
-    FINALPATH = os.path.abspath('./Backup')
+    paths = [os.path.abspath(path) for path in open('paths','r').read().split()]
+    FINALPATH = os.path.abspath('../Backup')
     for path in paths:
         folder_name = os.path.split(path)[1]
         for root, subdirs, files in os.walk(path):
@@ -38,5 +39,5 @@ if(__name__ == "__main__"):
                 src = os.path.join(root,file)
                 dest = os.path.join(FINALPATH,folder_name,useful_root,file)
                 crypt(src,dest)
-        print path + " paths complete."
+        print path + ": encryption complete."
     print "Encryption Successful"
