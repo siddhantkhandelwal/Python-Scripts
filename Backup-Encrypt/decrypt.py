@@ -24,16 +24,15 @@ def decrypt(crypt_path, decrpyt_path=None):
 
 if(__name__ == "__main__"):
     CRYPTED_DIR = os.path.abspath('../Backup')
-    FINALPATH = os.path.abspath('~/Desktop/Decrypted-Backup')
+    FINALPATH = os.path.abspath(os.path.join(os.path.expanduser('~'),'Desktop/Decrypted-Backup'))
 
-    folder_name = os.path.split(CRYPTED_DIR)[1]
     for root, subdirs, files in os.walk(CRYPTED_DIR):
         useful_root = root[len(CRYPTED_DIR)+1:]
         for subdir in subdirs:
-            pathlist = os.path.join(FINALPATH,folder_name,useful_root,subdir)
+            pathlist = os.path.join(FINALPATH,useful_root,subdir)
             os.makedirs(pathlist)
         for file in files:
             src = os.path.join(root,file)
-            dest = os.path.join(FINALPATH,folder_name,useful_root,file)
+            dest = os.path.join(FINALPATH,useful_root,file)
             decrypt(src,dest)
     print "Decryption Complete."
