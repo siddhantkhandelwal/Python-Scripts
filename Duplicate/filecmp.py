@@ -35,8 +35,7 @@ while x < len_dup:
 for x in range(len(duplicates)):
     for y in range(1, len(duplicates[x])):
         print str(y) + '. ' + duplicates[x][y]
-    print "Which file(s) do you want to delete ?"
-    file_no = raw_input()
+    file_no = raw_input("Which file(s) do you want to delete ?")
     if(file_no='0'):
         continue
     file_no = file_no.split(',')
