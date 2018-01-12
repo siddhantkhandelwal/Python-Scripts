@@ -8,8 +8,8 @@ This repository contains all of my Python scripts made for simplifying tasks.
  - hashlib
  - filecmp
  - struct
- - Crypto
- - shutil
+ - Crypto (in auto-backup)
+ - shutil (in auto-backup)
 
 ### List of Scripts:
 1. Duplicate: 
@@ -27,29 +27,6 @@ This repository contains all of my Python scripts made for simplifying tasks.
       ```bash
       python update.py /path/to/attendance_list /path/to/excel_sheet <Attd Column No.>
       ```
-3. auto-backup:
-   - Takes backup of all the important data in two formats
-     - Copies the data directly, or
-     - Encrypts the data using AES Encryption (CBC) and then store it
-   - How to use:<br>
-     - To take backup(Both Simple and encrypted)
-        ```bash
-        python auto.py
-        ```
-     - To take only simple backup
-        ```bash
-        python backup.py
-        ```
-     - To take only encrypted backup
-        ```bash
-        python crypt.py
-        ```
-     - To decrypt the files encrypted
-        ```bash
-        python crypt.py 0
-        ```
-     - Paths for simple backup must be stored in 'backup_paths', each separated by newline
-     - Paths for encrypted backup must be stored in 'secure_paths', each separated by newline
 
 ### Improvement:
 Anyone is welcome to contribute and improve/modify the scripts. <br>
