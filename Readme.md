@@ -27,6 +27,13 @@ This repository contains all of my Python scripts made for simplifying tasks.
       ```bash
       python update.py /path/to/attendance_list /path/to/excel_sheet <Attd Column No.>
       ```
+3. Alarm-Clock:
+   - Plays the file 'alarm.mp3' in the cwd once the alarm expires.
+   - Will be adding other featues, like snooze, ring daily/weekly
+   - How to use:
+      ```bash
+      python alarm-clock-cli.py h m s
+      ```
 
 ### Improvement:
 Anyone is welcome to contribute and improve/modify the scripts. <br>
