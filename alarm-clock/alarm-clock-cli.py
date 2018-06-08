@@ -30,11 +30,11 @@ username = getpass.getuser()
 script_path = os.path.abspath(sys.argv[0])
 
 if int(sys.argv[1]) == 0:
-    print(os.path.dirname(script_path))
+    #print(os.path.dirname(script_path))
     alarm_file = vlc.MediaPlayer(os.path.join(os.path.dirname(script_path), "alarm.mp3"))
     alarm_file_length = MP3(os.path.join(os.path.dirname(script_path), "alarm.mp3")).info.length
     alarm_file.play()
-    slep(ealarm_file_length)
+    sleep(alarm_file_length)
 
 elif int(sys.argv[1]) == 1:
     hours= int(sys.argv[2])
@@ -45,11 +45,12 @@ elif int(sys.argv[1]) == 1:
     
     if schedule_period == 'd':
         cron_task = CronTab(user=username)
-        job = cron_task.new(command='python ' + script_path + ' 0')
+        idno='0'
+        job = cron_task.new(command='python ' + script_path + ' 0', comment='alarm-clock-' + idno)
         job.hour.on(hours)
         job.minute.on(minutes)
         job.day.every(1)
-        print(job.is_valid())
+        #print(job.is_valid())
         cron_task.write()
         
     elif schedule_period == 'w':
@@ -62,3 +63,24 @@ elif int(sys.argv[1]) == 1:
         job.dow.on(dow)
         job.week.every(1)
         cron_task.write()
+    else:
+        hours= int(sys.argv[2])
+        minutes = int(sys.argv[3])
+        total_seconds= hours*60*60 + minutes*60
+        alarm_file = vlc.MediaPlayer(os.path.join(os.path.dirname(script_path), "alarm.mp3"))
+        alarm_file_length = MP3(os.path.join(os.path.dirname(script_path), "alarm.mp3")).info.length
+        alarm_file.play()
+        sleep(total_seconds)
+        #print(os.path.dirname(script_path))
+        sleep(alarm_file_length)
+
+elif int(sys.argv[1]) == 2:
+    cron_task = CronTab(user=username)
+    for job in cron_task:
+        if job.comment.startswith('alarm-clock-'):
+            print (job)
+    idno = input("Enter the id for the alarm to be deleted: ")
+    for job in cron_task:
+        if job.comment=='alarm-clock-'+idno:
+            cron_task.remove(job)
+            cron_task.write()

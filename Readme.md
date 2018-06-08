@@ -44,6 +44,11 @@
     ```bash
     python alarm-clock-cli.py option h m s
     ```
+    | Option | Task                               | Example                           |
+    |--------|------------------------------------|-----------------------------------|
+    | 0      | Ring Immediately                   | python alarm-clock-cli.py 0       |
+    | 1      | Create a new scheduled alarm       | python alarm-clock-cli.py 1 10 10 |                   
+    | 2      | Delete an existing scheduled alarm | python alarm-clock-cli.py 2       |
 
 ## Improvements:
 *Anyone is welcome to contribute and improve/modify the scripts.*
