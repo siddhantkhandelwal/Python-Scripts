@@ -41,22 +41,24 @@
     ```
  - Alarm-Clock
 
-    ```bash
-    python alarm-clock-cli.py option h m s
-    ```
-    | Option | Task                               | Example                           |
-    |--------|------------------------------------|-----------------------------------|
-    | 0      | Ring Immediately                   | python alarm-clock-cli.py 0       |
-    | 1      | Create a new scheduled alarm       | python alarm-clock-cli.py 1 10 10 |                   
-    | 2      | Delete an existing scheduled alarm | python alarm-clock-cli.py 2       |
+   - CLI Version
+
+     ```bash
+     python alarm-clock-cli.py option h m s
+     ```
+        | Option | Task                               | Example                           |
+        |--------|------------------------------------|-----------------------------------|
+        | 0      | Ring Immediately                   | python alarm-clock-cli.py 0       |
+        | 1      | Create a new scheduled alarm       | python alarm-clock-cli.py 1 10 10 |                   
+        | 2      | Delete an existing scheduled alarm | python alarm-clock-cli.py 2       |
 
 ## Improvements:
 *Anyone is welcome to contribute and improve/modify the scripts.*
 
 - [Alarm-Clock](https://github.com/siddhantkhandelwal/Python-Scripts/tree/master/alarm-clock):
-  - Add an option to snooze the alarm.
-  - Add an option to delete/modify scheduled alarms.
-  - Add an option for custom alarm sounds.
-  - Create logs specific to the script. Will help in keeping track of alarms independent of the cron-tab.
+  - CLI Version
+    - Add an option to snooze the alarm.
+    - Create logs specific to the script. Will help in keeping track of alarms independent of the cron-tab.
+  - GUI Version
 
 *Please open an issue if you find any bugs in any of the scripts.*
