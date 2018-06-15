@@ -1,4 +1,6 @@
 '''
+Alarm Clock CLI Client
+
 Requirements:
 vlc:            pip install vlc
 mutagen:        pip install mutagen
